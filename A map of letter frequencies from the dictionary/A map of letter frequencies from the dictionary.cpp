@@ -39,14 +39,19 @@ int main()
 	};
 
 
-	while (!fin.eof())
+	char currentChar;
+	while (fin >> currentChar)
 	{
-		char currentChar; 
-		fin >> currentChar; 
+ 
+		//fin >> currentChar; 
 		//cout << currentChar << "\n";
 
-		letterFrequencyMap[currentChar]++; 
+		//if (isalpha(currentChar)) //disregard end of file character
+		//{
+			letterFrequencyMap[currentChar]++;
+		//}
 
+		//letterFrequencyMap.at(currentChar)++; 
 	}
 
 
