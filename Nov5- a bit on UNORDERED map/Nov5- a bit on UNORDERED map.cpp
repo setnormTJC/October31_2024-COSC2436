@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include<iomanip>
+
 #include<unordered_map>
 
 using std::cout; 
@@ -19,12 +21,17 @@ int main()
 	productPriceMap.insert({ "Mousepad", 74.00 });
 	productPriceMap.insert({ "Soap - ivory soap - 6 ct", 3.99 });
 
-	//std::vector<string> fakeProductNames = {"A", "B", "C", "D", "E", "F"}
-	//for ()
+	std::vector<string> fakeProductNames = { "A", "B", "C", "D", "E", "F", "G" };
+	for (auto& productName : fakeProductNames)
+	{
+		productPriceMap.insert({ productName, 0 });
+	}
 
 	for (auto& thePair : productPriceMap)
 	{
-		cout << thePair.first << " cost " << thePair.second << "\n";
+		cout << std::left << std::setw(30) << thePair.first 
+			/*<< " cost " */
+			<< std::left << std::setw(10) << thePair.second << "\n";
 	}
 
 
