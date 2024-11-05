@@ -14,56 +14,71 @@ using std::cout;
 using std::ifstream; 
 
 
+
+//struct StateRecord
+//{
+//	string stateName; 
+//	string whoTheyVotedFor; //Harris, Trump, independent, WRITE-in? 
+//};
+//
+//map<StateRecord, int> electoralMap
+//=
+//{
+//	{StateRecord{"Texas", "Trump"}, 40},
+//	{StateRecord{"New York", "Harris"}, 32},
+//};
+
+
+//string determineWinner(std::map<StateRecord, int> electoralMap)
+//{
+//	int numberOfTrumpVotes = 0; 
+//	int numberOfHarrisVotes = 0;
+//
+//	for (auto& thePair : electoralMap)
+//	{
+//		if (thePair.first.whoTheyVotedFor == "trump")
+//		{
+//			numberOfTrumpVotes += thePair.second; //... continue with this function definition if interested.,,
+//		}
+//	}
+//}
+
+map<int, int> nSquaredMap =
+{
+	{2, 4},
+	{4, 16},
+	{8, 64},
+};
+
 int main()
 {
-	ifstream fin{"babyTextFile.txt"};
+	//ifstream fin{"babyTextFile.txt"};
+	ifstream fin{ "popularWords.txt" };
+
 	if (!fin.is_open())
 	{
 		cout << "FNFE\n";
 		return 1;
 	}
 
-	map<char, int> letterFrequencyMap =
-	{
-		{'a', 0},
-		{'b', 0},
-		{'c', 0},
-		{'d', 0},
-		{'e', 0},
-		{'f', 0},
-		{'g', 0},
-		{'h', 0},
-		{'i', 0},
-		{'j', 0},
-		{'k', 0}
-	};
+	map<char, int> letterFrequencyMap;// = {{}}
 
+	//why not put int first then char? Is it arbitrary? 
+	for (char letter = 'a'; letter <= 'z'; ++letter)
+	{
+		letterFrequencyMap.insert({ letter, 0 });
+	};
 
 	char currentChar;
 	while (fin >> currentChar)
 	{
- 
-		//fin >> currentChar; 
-		//cout << currentChar << "\n";
-
-		//if (isalpha(currentChar)) //disregard end of file character
-		//{
-			letterFrequencyMap[currentChar]++;
-		//}
-
-		//letterFrequencyMap.at(currentChar)++; 
+		letterFrequencyMap[currentChar]++;
 	}
-
 
 	for (auto& thePair : letterFrequencyMap)
 	{
 		cout << thePair.first << " has occurred this many times: " << thePair.second << "\n";
 	}
-
-
-
-
-
 
 	fin.close(); 
 }
